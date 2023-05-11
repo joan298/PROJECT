@@ -1,0 +1,36 @@
+extends layout
+
+block content
+ body(style="background-color: lightblue;")
+  h1 PATIENT DETAILS
+  table(border=1)
+    tr
+      td patient.patient_national_id
+      td patient.name
+      td patient.dob 
+      td patient.address 
+      td patient.mobile 
+      td patient.gender
+      td patient.nationality 
+      td patient.next_of_kin 
+      td patient.relationship 
+      td patient.emergency_contact 
+      
+
+
+    for  item in patient
+      tr
+        td #{item.patient_national_id}
+        td #{item.name}
+        td #{item.dob}
+        td #{item.address}
+        td #{item.mobile}
+        td #{item.gender}
+        td #{item.nationality}
+        td #{item.next_of_kin}
+        td #{item.relationship}
+        td #{item.emergency_contact}
+
+
+ 
+  

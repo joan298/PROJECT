@@ -17,11 +17,14 @@ const config = {
   
 const pool = mysql.createPool(config.db);
 
-// Utility function to query the database
-async function query(sql, params) {
+ //Utility function to query the database
+  async function query(sql, params) {
+  console.log('Executing query:', sql);
+  console.log('Query parameters:', params);
+  //const result = await db.query(sql, params);
   const [rows, fields] = await pool.execute(sql, params);
 
-  return rows;
+ return rows;
 }
 
 module.exports = {

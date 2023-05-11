@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  body(style="background-color: lightblue;")
+    br
+    br
+    br
+    h1 WELCOME
+    
+    script.
+      function showPopup() {
+        alert('Data security is critical in healthcare. Please protect patient privacy and confidential medical information by ensuring that only authorized personnel have access to sensitive data. Use strong passwords, beware of any training sessions updates to remind our selves of patient data security, and how to prevent security threats. By prioritizing data security, we can provide the highest level of care to our patients');
+      }
+
+      setInterval(function() {
+        showPopup();
+      }, 4000);
+
+      br
+      br
+      br
+      br
+      br
+
+  <a href='/login' > <button> NEXT </button> </a>

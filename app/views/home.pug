@@ -1,0 +1,24 @@
+extends layout
+
+block content
+ body(style="background-color: lightblue;")
+  h1 NEW PATIENT?
+
+  h2 PLEASE CLICK TO REGISTER NEW PATIENTS!
+  h3 VERIFY PATIENT IDENTITY IF OTHERWISE.
+
+  button.yes-button(onclick="handleClick('yes')") Yes
+
+  button.no-button(style="float: right;" onclick="handleClick('no')") No
+  
+
+    script.
+      function handleClick(buttonType) {
+        if (buttonType === 'yes') {
+          // Navigate to the registration page
+          window.location.href = '/registration';
+        } else if (buttonType === 'no') {
+          // Navigate to the verification page
+          window.location.href = '/verification';
+        }
+      }

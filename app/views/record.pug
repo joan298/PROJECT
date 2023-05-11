@@ -1,0 +1,32 @@
+extends layout
+
+block content
+ body(style="background-color: lightblue;")
+ h1 PATIENT RECORDS INFORMATION
+  table(border=1)
+    tr
+      td record.record_number
+      td record.record_datetime 
+      td record.Allergies 
+      td record.weight 
+      td record.height 
+      td record.blood_group 
+      td record.smoke 
+      td record.drink
+      td record.patient_national_id
+      
+      
+
+
+    for  item in record
+      tr
+        td #{item.record_number}
+        td #{item.record_datetime}
+        td #{item.Allergies}
+        td #{item.weight}
+        td #{item.height}
+        td #{item.blood_group}
+        td #{item.smoke}
+        td #{item.drink}
+        td #{item.patient_national_id}
+        

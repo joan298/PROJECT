@@ -1,0 +1,16 @@
+extends layout
+block content
+    body(style="background-color: skyblue;")
+    h1 LOGIN HERE
+    form(action="/authenticate" method="POST")
+        label(for='name') name: 
+        input(type="name", name="name", id= "nameInput", required) 
+        br
+        br
+        label(for='password') password: 
+        input(type="password", name="password", id="passwordInput", required) 
+        br
+        br
+        button(type='submit') Login
+
+    

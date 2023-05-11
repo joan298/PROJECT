@@ -1,0 +1,22 @@
+extends layout
+
+block content
+ body(style="background-color: lightblue;")
+ h1 PATIENT TEST INFORMATION
+  table(border=1)
+    tr
+      td patient.test_id 
+      td patient.test_name
+      td patient.test_result  
+      td patient.app_number  
+      
+      
+
+
+    for  item in test
+      tr
+        td #{item.test_id}
+        td #{item.test_name}
+        td #{item.test_result}
+        td #{item.app_number}
+        

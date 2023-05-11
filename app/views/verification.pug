@@ -1,0 +1,14 @@
+extends layout
+block content
+    h1 VERIFY PATIENT IDENTITY
+    body(style="background-color: skyblue;")
+    form(method="POST", action="/verify")
+        label(for="name") name:
+        input(type="name" id="name" name="name" required)
+        br
+        br
+        label(for="national_id_number") national_id_number:
+        input(type="text" id="national_id_number" name="national_id_number" required)
+        br
+        br
+        button(type="submit") verify 

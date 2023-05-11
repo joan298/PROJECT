@@ -1,0 +1,48 @@
+extends layout
+block content
+    body(style="background-color: lightblue;")
+        h1 REGISTER NEW PATIENT
+    form(action='/submit', method='POST')
+
+        label(for="patient_national_id") patient_national_id:
+        input(type="text", name="patient_national_id", placeholder="Enter your patient_national_id", required)
+        br
+        br
+        label(for="name") name:
+        input(type="text", name="name", placeholder="Enter your name", required)
+        br
+        br
+        label(for="dob") dob:
+        input(type="date", name="dob", placeholder="Enter your dob", required)
+        br
+        br
+        label(for="Address") address:
+        input(type="Address", name="Address", placeholder="Enter your Address", required)
+        br
+        br
+        label(for="mobile") mobile:
+        input(type="tel", name="mobile", placeholder="Enter your mobile", required)
+        br
+        br
+        label(for="gender") gender:
+        input(type="gender", name="gender", placeholder="Enter your gender", required)
+        br
+        br
+        label(for="nationality") nationality:
+        input(type="text", name="nationality", placeholder="Enter your nationality", required)
+        br
+        br
+        label(for="next_of_kin") next_of_kin:
+        input(type="text", name="next_of_kin", placeholder="Enter your next_of_kin", required)
+        br
+        br
+        label(for="relationship") relationship:
+        input(type="text", name="relationship", placeholder="Enter your relationship", required)
+        br
+        br
+        label(for="Emergency_contact") emergency_contact:
+        input(type="tel", name="Emergency_contact", placeholder="Enter your Emergency_contact", required)
+        br
+        br
+        
+        button(type="submit") Register
