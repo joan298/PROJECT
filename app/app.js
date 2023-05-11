@@ -51,15 +51,17 @@ const bcrypt = require ("bcryptjs");
 const { User } = require("./models/staff");
 
   
+// Initialize the number of login attempts to zero
+let loginAttempts = 0;
+
 app.get('/login', function (req, res) {
   res.render('login');
 });
- 
-
 
 app.post('/authenticate', async function (req, res) {
   const { name, password } = req.body;
   try {
+    // Check if the username and password are valid
     const sql = "SELECT staff.staff_id, staffRole.role_id FROM staff INNER JOIN staffRole ON staff.staff_id = staffRole.staff_id WHERE staff.name = ? AND staff.password = ?";
     const result = await db.query(sql, [name, password]);
     if (result.length > 0) {
@@ -81,7 +83,18 @@ app.post('/authenticate', async function (req, res) {
         res.send('unauthorised');
       }
     } else {
-      res.render('login2');
+      // If invalid, increment the number of login attempts
+      loginAttempts++;
+
+      // If the user has exceeded the maximum number of login attempts
+      if (loginAttempts >= 3) {
+        // Display an error message and suggest the user to contact the system administrator
+        res.status(401).send('You have exceeded the maximum number of login attempts. Please contact your system administrator.');
+      } else {
+        // If the user still has attempts left, display a message with the remaining attempts
+        const remainingAttempts = 3 - loginAttempts;
+        res.status(401).render('login2', { message: `Invalid username or password. Please try again. You have ${remainingAttempts} attempts remaining.` });
+      }
     }
   } catch (err) {
     console.error(`Error while authenticating user: ${err.message}`);
@@ -403,39 +416,55 @@ app.get('/home', function (req, res){
     res.render('home');
     });
 
+    let verificationAttempts = 0;
 
- // patient verifction route
-app.get('/verification', function (req, res){
-    res.render('verification');
-    });
+// patient verification route
+app.get('/verification', function (req, res) {
+  res.render('verification');
+});
 
-  //app.post('/verify', (req, res) => {
-  //  const { name, national_id_number } = req.body;
-    
-  //  res.render('successful');
-  //  });
+app.post('/verify', async function (req, res) {
+  try {
+    const { name, national_id_number } = req.body;
 
-  app.post('/verify', async function (req, res){
-    try {
-      const { name, national_id_number } = req.body;
-  
-      // Check if the patient with the given name and national ID number exists
-      const sql = "SELECT * FROM patient WHERE name = ? AND patient_national_id = ?";
-      const result = await db.query(sql, [name, national_id_number]);
-      if (result.length > 0) {
-        // Patient exists, render success page
-        res.render('successful2');
+    // Check if the patient with the given name and national ID number exists
+    const sql = "SELECT * FROM patient WHERE name = ? AND patient_national_id = ?";
+    const result = await db.query(sql, [name, national_id_number]);
+
+    if (result.length > 0) {
+      // Patient exists, render success page
+      res.render('successful2');
+    } else {
+      // If invalid, increment the number of login attempts
+      verificationAttempts++;
+
+      // If the user has exceeded the maximum number of login attempts
+      if (verificationAttempts >= 2) {
+        // Display an error message and suggest the user to contact the system administrator
+        res.status(401).send('You have exceeded the maximum number of verification attempts. Please contact your system administrator.');
       } else {
         // Patient doesn't exist, render error page
         res.render('verification2');
       }
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('An error occurred');
     }
-  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An error occurred');
+  }
+});
 
+// update route
+app.post('/update_test_result', (req, res) => {
+  // Get the test ID and new test result from the form submission
+  const testId = req.body.test_id;
+  const newTestResult = req.body.test_result;
 
+  // Update the corresponding test record in your database
+  // (Code to update the database goes here)
+
+  // Redirect the user back to the page that displays the updated test information
+  res.redirect('/patient_test_information');
+});
   
 
 
