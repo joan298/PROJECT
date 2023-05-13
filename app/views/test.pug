@@ -8,7 +8,8 @@ block content
       td patient.test_id 
       td patient.test_name
       td patient.test_result  
-      td patient.app_number  
+      td patient.app_number
+      td update Action  
       
       
 
@@ -19,4 +20,6 @@ block content
         td #{item.test_name}
         td #{item.test_result}
         td #{item.app_number}
-  
+        td
+          form(action=`/update${item.test_id}`, method="post") 
+             button(type="submit") update

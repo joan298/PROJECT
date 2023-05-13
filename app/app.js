@@ -453,19 +453,27 @@ app.post('/verify', async function (req, res) {
   }
 });
 
-// update route
-app.post('/update_test_result', (req, res) => {
-  // Get the test ID and new test result from the form submission
-  const testId = req.body.test_id;
-  const newTestResult = req.body.test_result;
 
-  // Update the corresponding test record in your database
-  // (Code to update the database goes here)
+ 
 
-  // Redirect the user back to the page that displays the updated test information
-  res.redirect('/patient_test_information');
-});
+app.use(express.urlencoded({ extended: true }));
   
+app.post('/update/:id', (req, res) => {
+  const testId = req.params.id;
+  const { test_result } = req.body;
+
+  // Update the record in the database
+  const query = `UPDATE test SET test_result = '${test_result}' WHERE test_id = ${testId}`;
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error updating test result:', error);
+      return;
+    }
+    console.log(`Record with ID ${testId} updated successfully`);
+    res.render('logout'); // Redirect to the logout after the update
+  });
+});
+
 
 
     app.get('/db_test', function (req, res) {
