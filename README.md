@@ -1,8 +1,4 @@
 
-### Super-quickstart the project:
-
-* Make sure that you don't have any other containers running usind docker ps
-* run ```docker-compose up --build```
 Abstract
 This research focuses on implementing identity and access management (IAM) rules to reduce data security concerns in Ugandan public hospitals. The goal of the study is to minimise the risk of data breaches, prevent unauthorised access to confidential and sensitive patient information, and guarantee adherence to privacy legal standards. The study will examine the difficulties in putting IAM rules into practise in Uganda's public hospitals and assess the degree to which IAM policies may be used to reduce data security concerns. The study will also investigate the most effective ways to adopt IAM policies in public hospitals in Uganda.
 Numerous legal, social, ethical, and professional factors will inform the research. The confidentiality, privacy, and security of patient data will be given top priority in the study because it is sensitive. The study will adhere to the National eHealth Policy and Strategy, which aim to control how the Ministry of Health handles patient health data and its Health Management Information Systems. The study will also adhere to Uganda's data security framework, which is established by the Constitution and the Data Protection and Privacy Act 2019.
