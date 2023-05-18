@@ -35,7 +35,7 @@ http://localhost:8081/
 
 #### Visit your express app at:
 
-http://localhost:3000
+http://localhost:3000/welcome
 
 
 
